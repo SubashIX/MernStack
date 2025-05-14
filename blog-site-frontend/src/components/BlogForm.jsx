@@ -7,7 +7,7 @@ const BlogForm = ({ initialValues, onSubmit, isSubmitting }) => {
     title: Yup.string().required('Required'),
     category: Yup.string().required('Required'),
     content: Yup.string().required('Required'),
-    image: Yup.mixed()
+    image: Yup.mixed().required('Image is required'),
   });
 
   return (
@@ -16,12 +16,12 @@ const BlogForm = ({ initialValues, onSubmit, isSubmitting }) => {
         title: initialValues?.title || '',
         category: initialValues?.category || '',
         content: initialValues?.content || '',
-        image: null
+        image: null,
       }}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {({ setFieldValue }) => (
+      {({ setFieldValue, errors, touched }) => (
         <Form>
           <VStack spacing={4}>
             <Field name="title">
@@ -63,8 +63,8 @@ const BlogForm = ({ initialValues, onSubmit, isSubmitting }) => {
 
             <Field name="image">
               {({ form }) => (
-                <FormControl>
-                  <FormLabel>Image (Optional)</FormLabel>
+                <FormControl isInvalid={form.errors.image && form.touched.image}>
+                  <FormLabel>Image</FormLabel>
                   <Input
                     type="file"
                     onChange={(e) => setFieldValue("image", e.currentTarget.files[0])}

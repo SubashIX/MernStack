@@ -16,9 +16,8 @@ const CreateBlog = () => {
       formData.append('title', values.title);
       formData.append('category', values.category);
       formData.append('content', values.content);
-      if (values.image) {
-        formData.append('image', values.image);
-      }
+      formData.append('image', values.image);
+
 
       await createBlog(formData);
       toast({

@@ -44,10 +44,20 @@ const deleteBlog = async (id) => {
   });
   return response.data;
 };
+const getMyBlogs = async (userId) => {
+    console.log()
+    const response = await axios.get(`${API_URL}/user/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('user'))?.token}`
+      }
+    });
+    return response.data;
+  };
 
 export {
   getBlogs,
   createBlog,
   updateBlog,
-  deleteBlog
+  deleteBlog,
+  getMyBlogs
 };

@@ -94,4 +94,16 @@ const deleteBlog = async (req, res) => {
   }
 };
 
-module.exports = { getAllBlogs, createBlog, updateBlog, deleteBlog };
+const myBlog = async (req, res) => {
+    try {
+        console.log(req.params.userId,"req.params.userId")
+      const blogs = await Blog.find({ userId: req.params.userId }).populate('userId', 'name');
+      res.json(blogs);
+    } catch (error) {
+      console.log(error, "errorerror");
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
+
+module.exports = { getAllBlogs, createBlog, updateBlog, deleteBlog , myBlog};
