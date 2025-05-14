@@ -16,19 +16,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }).single('image');
 
 const getAllBlogs = async (req, res) => {
-  try {
-    const { category, author } = req.query;
-    const filter = {};
-    
-    if (category) filter.category = category;
-    if (author) filter.author = author;
-
-    const blogs = await Blog.find(filter).populate('userId', 'name');
-    res.json(blogs);
-  } catch (error) {
-    res.status(500).json({ message: 'Something went wrong' });
-  }
-};
+    try {
+      const { category, author } = req.query;
+      const filter = {};
+      
+      if (category) filter.category = category;
+      if (author) filter.author = { $regex: author, $options: 'i' };
+  
+      const blogs = await Blog.find(filter).populate('userId', 'name');
+      res.json(blogs);
+    } catch (error) {
+      res.status(500).json({ message: 'Something went wrong' });
+    }
+  };
 
 const createBlog = async (req, res) => {
   upload(req, res, async (err) => {

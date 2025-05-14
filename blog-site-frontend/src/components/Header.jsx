@@ -16,7 +16,7 @@ const Header = () => {
       <Flex alignItems="center">
         <Heading size="md">
           <ChakraLink as={RouterLink} to="/">
-            BlogSite
+            Arnifi
           </ChakraLink>
         </Heading>
         <Spacer />

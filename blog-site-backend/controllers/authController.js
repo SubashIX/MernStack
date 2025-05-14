@@ -2,6 +2,7 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const path = require('path');
+const bcrypt = require('bcryptjs');
 
 // Load the .env file into process.env
 dotenv.config({ path: path.join(__dirname, '.env') });
@@ -29,8 +30,10 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password,"email, password")
     
     const user = await User.findOne({ email });
+    console.log(user,"user")
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
@@ -40,10 +43,11 @@ const login = async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
     res.json({ token, userId: user._id, name: user.name });
   } catch (error) {
+    console.log(error,"error")
     res.status(500).json({ message: 'Something went wrong' });
   }
 };
