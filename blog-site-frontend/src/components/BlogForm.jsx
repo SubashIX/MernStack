@@ -7,7 +7,7 @@ const BlogForm = ({ initialValues, onSubmit, isSubmitting }) => {
     title: Yup.string().required('Required'),
     category: Yup.string().required('Required'),
     content: Yup.string().required('Required'),
-    image: Yup.mixed().required('Image is required'),
+    image: Yup.mixed().notRequired(),
   });
 
   return (
@@ -61,18 +61,28 @@ const BlogForm = ({ initialValues, onSubmit, isSubmitting }) => {
               )}
             </Field>
 
-            <Field name="image">
-              {({ form }) => (
-                <FormControl isInvalid={form.errors.image && form.touched.image}>
-                  <FormLabel>Image</FormLabel>
-                  <Input
-                    type="file"
-                    onChange={(e) => setFieldValue("image", e.currentTarget.files[0])}
-                  />
-                  <FormErrorMessage>{form.errors.image}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
+                      <Field name="image">
+                          {({ form }) => (
+                              <FormControl isInvalid={form.errors.image && form.touched.image}>
+                                  <FormLabel>Image (Optional)</FormLabel>
+                                  <Box
+                                      border="1px solid"
+                                      borderColor="gray.200"
+                                      borderRadius="md"
+                                      p={2}
+                                      width="full"
+                                  >
+                                      <Input
+                                          type="file"
+                                          onChange={(e) => setFieldValue("image", e.currentTarget.files[0])}
+                                          variant="unstyled"
+                                      />
+                                  </Box>
+                                  <FormErrorMessage>{form.errors.image}</FormErrorMessage>
+                              </FormControl>
+                          )}
+                      </Field>
+
 
             <Button
               mt={4}

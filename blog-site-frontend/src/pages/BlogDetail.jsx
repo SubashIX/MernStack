@@ -61,9 +61,6 @@ const BlogDetail = () => {
       <Text fontSize="sm" color="gray.500" mb={4}>
         By {blog.author}
       </Text>
-      {blog.image && (
-        <Image src={`http://localhost:5000/${blog.image}`} alt={blog.title} mb={4} />
-      )}
       <Text whiteSpace="pre-line" mb={6}>
         {blog.content}
       </Text>
