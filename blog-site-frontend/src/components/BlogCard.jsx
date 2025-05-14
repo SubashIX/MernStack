@@ -80,12 +80,10 @@ const BlogCard = ({ blog, onDelete }) => {
                 </Box>
             )}
 
-            {/* Category badge - positioned normally */}
             <Badge colorScheme="teal" mb={2} alignSelf="flex-start">
                 {blog.category}
             </Badge>
 
-            {/* Main content container with flex-grow */}
             <Box flex="1" display="flex" flexDirection="column">
                 <Heading size="md" mb={2}>
                     <ChakraLink as={Link} to={`/blogs/${blog._id}`}>
@@ -102,7 +100,6 @@ const BlogCard = ({ blog, onDelete }) => {
                 </Text>
             </Box>
 
-            {/* Delete confirmation modal - outside the flex container */}
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
@@ -121,7 +118,6 @@ const BlogCard = ({ blog, onDelete }) => {
                 </ModalContent>
             </Modal>
 
-            {/* Read More button - fixed at the bottom */}
             <Button
                 as={Link}
                 to={`/blogs/${blog._id}`}
