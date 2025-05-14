@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
-// Load the .env file into process.env
 dotenv.config({ path: path.join(__dirname, '.env') });
 
 const signup = async (req, res) => {

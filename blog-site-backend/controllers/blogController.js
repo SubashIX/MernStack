@@ -3,7 +3,7 @@ const User = require('../models/User');
 const multer = require('multer');
 const path = require('path');
 
-// Image upload setup
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const path = require('path');
 
-// Load the .env file into process.env
+
 dotenv.config({ path: path.join(__dirname, '.env') });
 
 module.exports = (req, res, next) => {

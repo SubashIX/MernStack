@@ -8,7 +8,6 @@ router.get('/', auth, getAllBlogs);
 router.post('/', auth, createBlog);
 router.put('/:id', auth, updateBlog);
 router.delete('/:id', auth, deleteBlog);
-// Get blogs by user ID
 router.get('/user/:userId',auth, myBlog );
 
 module.exports = router;
