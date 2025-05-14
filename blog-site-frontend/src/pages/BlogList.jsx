@@ -35,12 +35,12 @@ const BlogList = () => {
       }
     };
 
-    // Clear previous timeout if it exists
+
     if (searchTimeout) {
       clearTimeout(searchTimeout);
     }
 
-    // Set new timeout for debouncing
+
     const timeout = setTimeout(() => {
       fetchBlogs();
     }, 500);

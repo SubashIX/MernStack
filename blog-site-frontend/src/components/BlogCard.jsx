@@ -55,10 +55,9 @@ const BlogCard = ({ blog, onDelete }) => {
             boxShadow="md"
             display="flex"
             flexDirection="column"
-            minHeight="300px" // Minimum height instead of fixed
-            height="100%" // Take full height of parent
+            minHeight="300px" 
+            height="100%"
         >
-            {/* Edit/Delete menu in top-right corner - outside the flex container */}
             {currentUser?.userId === blog.userId?._id && (
                 <Box position="absolute" top="2" right="2" zIndex="1">
                     <Menu>

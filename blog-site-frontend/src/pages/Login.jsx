@@ -23,7 +23,6 @@ const Login = () => {
       let errorMessage = 'Login failed. Please try again.';
       
       if (error.response) {
-        // Backend returned an error response
         if (error.response.status === 401) {
           errorMessage = 'Invalid email or password';
         } else if (error.response.status === 404) {

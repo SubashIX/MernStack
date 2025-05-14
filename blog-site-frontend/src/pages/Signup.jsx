@@ -24,7 +24,6 @@ const Signup = () => {
       let errorMessage = 'Signup failed. Please try again.';
       
       if (error.response) {
-        // Handle different backend error cases
         if (error.response.status === 409) {
           errorMessage = 'Email already exists. Please use a different email or login.';
         } else if (error.response.status === 400) {

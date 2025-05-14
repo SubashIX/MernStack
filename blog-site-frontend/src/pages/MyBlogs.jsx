@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Heading, SimpleGrid, Spinner, Text, Button } from '@chakra-ui/react';
 import BlogCard from '../components/BlogCard';
-import { getMyBlogs } from '../services/blogs'; // Create this function
+import { getMyBlogs } from '../services/blogs';
 import { useAuth } from '../context/AuthContext';
 
 const MyBlogs = () => {
@@ -16,7 +16,7 @@ const MyBlogs = () => {
         if (!currentUser) return;
         
         console.log('Fetching blogs for user:', currentUser.userId);
-        const data = await getMyBlogs(currentUser.userId); // Specific endpoint
+        const data = await getMyBlogs(currentUser.userId);
         console.log('Received blogs:', data);
         
         setBlogs(data);
